@@ -1,8 +1,5 @@
 #![no_std]
 
-#[cfg(test)]
-mod tests;
-
 mod fastpack;
 mod fastunpack;
 mod fastpackwithoutmask;

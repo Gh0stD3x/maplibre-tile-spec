@@ -1,0 +1,34 @@
+
+mod large {
+    use std::fs;
+
+    use fastpfor::FastPFOR;
+    use lazy_static::lazy_static;
+
+    lazy_static! {
+        static ref ASSETS_LARGE_RAW: Vec<u32> = {
+            let data = fs::read_to_string("./assets/large_raw.txt")
+                .expect("Error: can not read from assets (large_raw.txt)");
+            data.split(",")
+                .map(|i| { if i.parse::<i32>().is_err() {eprintln!("{}", i);} i.parse::<i32>().unwrap() as u32 })
+                .collect()
+        };
+        static ref ASSETS_LARGE_ENCODED: Vec<u32> = {
+            let data = fs::read_to_string("./assets/large_encoded.txt")
+                .expect("Error: can not read from assets (large_encoded.txt)");
+            data.split(",")
+                .map(|i| { if i.parse::<i32>().is_err() {eprintln!("{}", i);} i.parse::<i32>().unwrap() as u32 })
+                .collect()
+        };
+    }
+
+    #[test]
+    fn decode() {
+        let mut core = FastPFOR::default();
+        let mut output = vec![0; ASSETS_LARGE_RAW.len()];
+
+        core.decompress(&ASSETS_LARGE_ENCODED, &mut 0, output.as_mut_slice(), &mut 0);
+
+        assert_eq!(output, ASSETS_LARGE_RAW.as_slice());
+    }
+}

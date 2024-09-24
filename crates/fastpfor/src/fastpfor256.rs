@@ -1,6 +1,7 @@
 use byteorder::{ByteOrder, LittleEndian};
 use bitpacking::fastunpack;
-use maplibre_tile_spec::Decoder;
+
+use alloc::vec::Vec;
 
 use crate::utils::greatest_multiple;
 
@@ -14,12 +15,6 @@ pub struct FastPFOR {
     pub(crate) data_tobe_packed: Vec<Vec<u32>>,
     pub(crate) byte_container: Vec<u8>,
     pub(crate) data_pointers: Vec<usize>,
-}
-
-impl Decoder for FastPFOR {
-    fn decode(&mut self, in_buf: &[u32], in_pos: &mut usize, out_buf: &mut [u32], out_pos: &mut usize) {
-        self.decompress(in_buf, in_pos, out_buf, out_pos);
-    }
 }
 
 impl FastPFOR {
@@ -50,7 +45,7 @@ impl FastPFOR {
         let my_n_value = greatest_multiple(my_n_value, BLOCK_SIZE);
         let final_out = *out_pos + my_n_value;
         while *out_pos != final_out {
-            let this_size = std::cmp::min(self.page_size, final_out - *out_pos);
+            let this_size = core::cmp::min(self.page_size, final_out - *out_pos);
             self.decode_page(input, in_pos, out, out_pos, this_size);
         }
     }
@@ -162,4 +157,3 @@ impl FastPFOR {
         self.headless_decompress(input, in_pos, out, out_pos, out_length);
     }
 }
-

@@ -10,7 +10,8 @@ members = [
     "crates/fastpfor",
     "crates/RLE",
     "crates/delta",
-    "crates/varint"
+    "crates/varint",
+    "crates/dictionary"
 ]
 
 [lib]

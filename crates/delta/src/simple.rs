@@ -1,4 +1,4 @@
-pub fn encode_delta(input: &[i32], output: &mut [i32]) {
+pub fn encode_delta(input: &[i64], output: &mut [i64]) {
     if input.is_empty() || output.len() < input.len() {
         return;
     }
@@ -9,7 +9,7 @@ pub fn encode_delta(input: &[i32], output: &mut [i32]) {
     }
 }
 
-pub fn decode_delta(encoded: &[i32], output: &mut [i32]) {
+pub fn decode_delta(encoded: &[i64], output: &mut [i64]) {
     if encoded.is_empty() || output.len() < encoded.len() {
         return;
     }

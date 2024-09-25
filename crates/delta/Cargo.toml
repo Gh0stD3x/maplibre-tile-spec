@@ -13,3 +13,4 @@ SIMDx4 = []
 SIMDx8 = []
 
 [dependencies]
+maplibre-tile-spec = { path = "../../." }

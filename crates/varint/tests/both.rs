@@ -1,12 +1,14 @@
-
-use varint::{encode_single_varint, decode_single_varint};
+use maplibre_tile_spec::BinaryEncoding;
+use varint::VarInt;
 
 #[test]
 fn test_encode_single_byte() {
-    let input = 300;
+    let input = [300];
+    let mut encoded = Vec::new();
+    let mut decoded = Vec::new();
 
-    let encoded = encode_single_varint(input);
-    let decoded = decode_single_varint(&encoded.0);
+    VarInt::encode(&input, &mut encoded);
+    VarInt::decode(&encoded, &mut decoded);
 
-    assert_eq!(decoded, 300);
+    assert_eq!(decoded, input);
 }

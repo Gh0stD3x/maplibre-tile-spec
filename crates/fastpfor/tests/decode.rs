@@ -27,7 +27,7 @@ mod large {
         let mut core = FastPFOR::default();
         let mut output = vec![0; ASSETS_LARGE_RAW.len()];
 
-        core.decompress(&ASSETS_LARGE_ENCODED, &mut 0, output.as_mut_slice(), &mut 0);
+        core.decode(&ASSETS_LARGE_ENCODED, output.as_mut_slice());
 
         assert_eq!(output, ASSETS_LARGE_RAW.as_slice());
     }

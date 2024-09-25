@@ -1,5 +1,9 @@
 #![no_std]
 #![feature(portable_simd)]
+extern crate alloc;
+
+use alloc::vec::Vec;
+use maplibre_tile_spec::IntegerEncoding;
 
 #[cfg(any(
     all(feature = "SIMDx2", any(feature = "SIMDx4", feature = "SIMDx8")),
@@ -14,24 +18,22 @@ mod simd;
 #[cfg(feature = "scalar")]
 mod simple;
 
-/// # Info
-/// Encodes the input slice with delta encoding in a performant manor with SIMD support
-pub fn encode_delta(input: &[i32], output: &mut [i32]) {
-    assert_eq!(input.len(), output.len());
-    #[cfg(any(feature = "SIMDx2", feature = "SIMDx4", feature = "SIMDx8"))]
-    simd::encode_delta(input, output);
+pub struct DeltaEncoding {}
+impl IntegerEncoding<i64> for DeltaEncoding {
+    fn encode(input: &[i64], output: &mut Vec<i64>) {
+        assert_eq!(input.len(), output.len());
+        #[cfg(any(feature = "SIMDx2", feature = "SIMDx4", feature = "SIMDx8"))]
+        simd::encode_delta(input, output);
 
-    #[cfg(feature = "scalar")]
-    simple::encode_delta(input, output);
-}
+        #[cfg(feature = "scalar")]
+        simple::encode_delta(input, output);
+    }
+    fn decode(input: &[i64], output: &mut Vec<i64>) {
+        assert_eq!(input.len(), output.len());
+        #[cfg(any(feature = "SIMDx2", feature = "SIMDx4", feature = "SIMDx8"))]
+        simd::decode_delta(input, output);
 
-/// # Info
-/// Decodes the input slice with delta encoding in a performant manor with SIMD support
-pub fn decode_delta(input: &[i32], output: &mut [i32]) {
-    assert_eq!(input.len(), output.len());
-    #[cfg(any(feature = "SIMDx2", feature = "SIMDx4", feature = "SIMDx8"))]
-    simd::decode_delta(input, output);
-
-    #[cfg(feature = "scalar")]
-    simple::decode_delta(input, output);
+        #[cfg(feature = "scalar")]
+        simple::decode_delta(input, output);
+    }
 }

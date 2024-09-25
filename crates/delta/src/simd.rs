@@ -8,7 +8,7 @@ const VECTOR_SIZE: usize = 4;
 #[cfg(feature = "SIMDx8")]
 const VECTOR_SIZE: usize = 8;
 
-pub fn encode_delta(input: &[i32], output: &mut [i32]) {
+pub fn encode_delta(input: &[i64], output: &mut [i64]) {
     let mut prev: Simd<i32, VECTOR_SIZE> = Simd::splat(0);
 
     // Process all chunks that fit into SIMD vectors
@@ -32,8 +32,8 @@ pub fn encode_delta(input: &[i32], output: &mut [i32]) {
 
 /// # Info
 /// Decodes the input slice with delta encoding in a performant manor with SIMD support
-pub fn decode_delta(input: &[i32], output: &mut [i32]) {
-    let mut prev: Simd<i32, VECTOR_SIZE> = Simd::splat(0);
+pub fn decode_delta(input: &[i64], output: &mut [i64]) {
+    let mut prev: Simd<i64, VECTOR_SIZE> = Simd::splat(0);
 
     // Process all chunks that fit into SIMD vectors
     let chunks = input.chunks_exact(VECTOR_SIZE);

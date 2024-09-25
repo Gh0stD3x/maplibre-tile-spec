@@ -1,7 +1,7 @@
 
-use varint::length_of_single_varint;
+use varint::VarInt;
 
 #[test]
 fn test_measure_single_byte() {
-    assert_eq!(length_of_single_varint(300), 2);
+    assert_eq!(VarInt::length(300), 2);
 }

@@ -34,12 +34,21 @@ impl FastPFOR {
             data_pointers: vec![0; 33],
         }
     }
-
-    /// Constructs FastPFOR with default parameters
-    pub fn default() -> FastPFOR {
-        Self::new(DEFAULT_PAGE_SIZE)
+    
+    pub fn decode(&mut self, input: &[u32], output: &mut [u32]) {
+        self.decompress(input, &mut 0, output, &mut 0);
+    }
+    pub fn encode(&mut self, _input: &[u32], _output: &mut [u32]) {
+        unimplemented!("FastPFOR encoding ist not part of the projects scope")
     }
 
+    /// Uncompress function
+    fn decompress(&mut self, input: &[u32], in_pos: &mut usize, out: &mut [u32], out_pos: &mut usize) {
+        if input.is_empty() { return; }
+        let out_length = input[*in_pos] as usize;
+        *in_pos += 1;
+        self.headless_decompress(input, in_pos, out, out_pos, out_length);
+    }
     /// Headless uncompress function
     fn headless_decompress(&mut self, input: &[u32], in_pos: &mut usize, out: &mut [u32], out_pos: &mut usize, my_n_value: usize) {
         let my_n_value = greatest_multiple(my_n_value, BLOCK_SIZE);
@@ -148,12 +157,9 @@ impl FastPFOR {
         *out_pos = tmp_out_pos;
         *in_pos = in_except;
     }
-
-    /// Uncompress function
-    pub fn decompress(&mut self, input: &[u32], in_pos: &mut usize, out: &mut [u32], out_pos: &mut usize) {
-        if input.is_empty() { return; }
-        let out_length = input[*in_pos] as usize;
-        *in_pos += 1;
-        self.headless_decompress(input, in_pos, out, out_pos, out_length);
+}
+impl Default for FastPFOR {
+    fn default() -> FastPFOR {
+        Self::new(DEFAULT_PAGE_SIZE)
     }
 }

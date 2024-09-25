@@ -2,7 +2,7 @@
 mod large {
     use std::fs;
 
-    use fastpfor::FastPFOR;
+    use fastpfor_rs::FastPFOR;
     use lazy_static::lazy_static;
 
     lazy_static! {

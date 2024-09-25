@@ -9,7 +9,8 @@ members = [
     "crates/bitpacking",
     "crates/fastpfor",
     "crates/RLE",
-    "crates/delta"
+    "crates/delta",
+    "crates/varint"
 ]
 
 [lib]

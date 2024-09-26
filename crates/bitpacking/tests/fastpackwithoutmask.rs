@@ -1,4 +1,4 @@
-use bitpacking::fastpackwithoutmask;
+use bitpacking::BitPacking;
 
 static TEST_DATA: [u32; 32] = [
     1506, 468, 3129, 2824, 1715, 3459, 448, 1685, 242, 3189, 1405, 1689, 2603, 1459, 2860, 2397,
@@ -10,7 +10,7 @@ fn fastpackwithoutmask0() {
     let mut output: [u32; 32] = [0; 32];
     let expected: [u32; 32] = [0; 32];
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 0);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 0);
 
     assert_eq!(output, expected);
 }
@@ -23,7 +23,7 @@ fn fastpackwithoutmask1() {
         0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 1);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 1);
 
     assert_eq!(output, expected);
 }
@@ -36,7 +36,7 @@ fn fastpackwithoutmask2() {
         0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 2);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 2);
 
     assert_eq!(output, expected);
 }
@@ -49,7 +49,7 @@ fn fastpackwithoutmask3() {
         0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 3);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 3);
 
     assert_eq!(output, expected);
 }
@@ -62,7 +62,7 @@ fn fastpackwithoutmask4() {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 4);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 4);
 
     assert_eq!(output, expected);
 }
@@ -75,7 +75,7 @@ fn fastpackwithoutmask5() {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 5);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 5);
 
     assert_eq!(output, expected);
 }
@@ -88,7 +88,7 @@ fn fastpackwithoutmask6() {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 6);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 6);
 
     assert_eq!(output, expected);
 }
@@ -101,7 +101,7 @@ fn fastpackwithoutmask7() {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 7);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 7);
 
     assert_eq!(output, expected);
 }
@@ -114,7 +114,7 @@ fn fastpackwithoutmask8() {
         1313009647, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 8);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 8);
 
     assert_eq!(output, expected);
 }
@@ -128,7 +128,7 @@ fn fastpackwithoutmask9() {
         0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 9);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 9);
 
     assert_eq!(output, expected);
 }
@@ -142,7 +142,7 @@ fn fastpackwithoutmask10() {
         0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 10);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 10);
 
     assert_eq!(output, expected);
 }
@@ -156,7 +156,7 @@ fn fastpackwithoutmask11() {
         0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 11);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 11);
 
     assert_eq!(output, expected);
 }
@@ -170,7 +170,7 @@ fn fastpackwithoutmask12() {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 12);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 12);
 
     assert_eq!(output, expected);
 }
@@ -184,7 +184,7 @@ fn fastpackwithoutmask13() {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 13);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 13);
 
     assert_eq!(output, expected);
 }
@@ -199,7 +199,7 @@ fn fastpackwithoutmask14() {
         0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 14);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 14);
 
     assert_eq!(output, expected);
 }
@@ -213,7 +213,7 @@ fn fastpackwithoutmask15() {
         42744072, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 15);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 15);
 
     assert_eq!(output, expected);
 }
@@ -227,7 +227,7 @@ fn fastpackwithoutmask16() {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 16);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 16);
 
     assert_eq!(output, expected);
 }
@@ -241,7 +241,7 @@ fn fastpackwithoutmask17() {
         -264247286, -2141429522, 10683280, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 17);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 17);
 
     assert_eq!(output, expected);
 }
@@ -256,7 +256,7 @@ fn fastpackwithoutmask18() {
         0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 18);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 18);
 
     assert_eq!(output, expected);
 }
@@ -271,7 +271,7 @@ fn fastpackwithoutmask19() {
         0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 19);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 19);
 
     assert_eq!(output, expected);
 }
@@ -286,7 +286,7 @@ fn fastpackwithoutmask20() {
         0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 20);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 20);
 
     assert_eq!(output, expected);
 }
@@ -301,7 +301,7 @@ fn fastpackwithoutmask21() {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 21);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 21);
 
     assert_eq!(output, expected);
 }
@@ -316,7 +316,7 @@ fn fastpackwithoutmask22() {
         333824, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 22);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 22);
 
     assert_eq!(output, expected);
 }
@@ -331,7 +331,7 @@ fn fastpackwithoutmask23() {
         956825623, 166912, 0, 0, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 23);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 23);
 
     assert_eq!(output, expected);
 }
@@ -346,7 +346,7 @@ fn fastpackwithoutmask24() {
         0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 24);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 24);
 
     assert_eq!(output, expected);
 }
@@ -361,7 +361,7 @@ fn fastpackwithoutmask25() {
         41728, 0, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 25);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 25);
 
     assert_eq!(output, expected);
 }
@@ -376,7 +376,7 @@ fn fastpackwithoutmask26() {
         193724430, 14950400, 20864, 0, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 26);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 26);
 
     assert_eq!(output, expected);
 }
@@ -391,7 +391,7 @@ fn fastpackwithoutmask27() {
         -100663131, -286261233, 24215552, 3737600, 10432, 0, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 27);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 27);
 
     assert_eq!(output, expected);
 }
@@ -406,7 +406,7 @@ fn fastpackwithoutmask28() {
         250544128, 3026944, 934400, 5216, 0, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 28);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 28);
 
     assert_eq!(output, expected);
 }
@@ -421,7 +421,7 @@ fn fastpackwithoutmask29() {
         67010560, 15659008, 378368, 233600, 2608, 0, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 29);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 29);
 
     assert_eq!(output, expected);
 }
@@ -436,7 +436,7 @@ fn fastpackwithoutmask30() {
         47349760, 2711552, 2094080, 978688, 47296, 58400, 1304, 0, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 30);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 30);
 
     assert_eq!(output, expected);
 }
@@ -451,7 +451,7 @@ fn fastpackwithoutmask31() {
         42368, 65440, 61168, 5912, 14600, 652, 0
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 31);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 31);
 
     assert_eq!(output, expected);
 }
@@ -465,7 +465,7 @@ fn fastpackwithoutmask32() {
         3823, 739, 3650, 326
     ].map(|i| i as u32);
 
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 32);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 32);
 
     assert_eq!(output, expected);
     assert_eq!(output, TEST_DATA); // Equals
@@ -477,5 +477,5 @@ fn fastpackwithoutmask33() {
     let mut output: [u32; 32] = [0; 32];
 
     // 33 bitwidth is not supported, please panic
-    fastpackwithoutmask(&TEST_DATA, 0, &mut output, 0, 33);
+    BitPacking::fastpackwithoutmask(&TEST_DATA, &mut output, 33);
 }

@@ -1,4 +1,4 @@
-use bitpacking::{fastpack, fastunpack};
+use bitpacking::BitPacking;
 
 static TEST_DATA: [u32; 32] = [
     1506, 468, 3129, 2824, 1715, 3459, 448, 1685, 242, 3189, 1405, 1689, 2603, 1459, 2860, 2397,
@@ -12,7 +12,7 @@ fn fastunpack0() {
     let mut output: [u32; 32] = [0; 32];
     let temp: [u32; 32] = [0; 32];
 
-    fastunpack(&temp, 0, &mut output, 0, 1);
+    BitPacking::fastunpack(&temp, &mut output, 1);
 
     assert_eq!(temp, output);
 }
@@ -23,8 +23,8 @@ fn fastunpack1() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 1);
-    fastunpack(&temp, 0, &mut output, 0, 1);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 1);
+    BitPacking::fastunpack(&temp, &mut output, 1);
 
     assert_eq!(output, TEST_DATA);
 }
@@ -35,8 +35,8 @@ fn fastunpack2() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 2);
-    fastunpack(&temp, 0, &mut output, 0, 2);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 2);
+    BitPacking::fastunpack(&temp, &mut output, 2);
 
     assert_eq!(output, TEST_DATA);
 }
@@ -47,8 +47,8 @@ fn fastunpack3() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 3);
-    fastunpack(&temp, 0, &mut output, 0, 3);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 3);
+    BitPacking::fastunpack(&temp, &mut output, 3);
 
     assert_eq!(output, TEST_DATA);
 }
@@ -59,8 +59,8 @@ fn fastunpack4() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 4);
-    fastunpack(&temp, 0, &mut output, 0, 4);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 4);
+    BitPacking::fastunpack(&temp, &mut output, 4);
 
 
     assert_eq!(output, TEST_DATA);
@@ -72,8 +72,8 @@ fn fastunpack5() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 5);
-    fastunpack(&temp, 0, &mut output, 0, 5);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 5);
+    BitPacking::fastunpack(&temp, &mut output, 5);
 
 
     assert_eq!(output, TEST_DATA);
@@ -85,8 +85,8 @@ fn fastunpack6() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 6);
-    fastunpack(&temp, 0, &mut output, 0, 6);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 6);
+    BitPacking::fastunpack(&temp, &mut output, 6);
 
 
     assert_eq!(output, TEST_DATA);
@@ -98,8 +98,8 @@ fn fastunpack7() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 7);
-    fastunpack(&temp, 0, &mut output, 0, 7);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 7);
+    BitPacking::fastunpack(&temp, &mut output, 7);
 
 
     assert_eq!(output, TEST_DATA);
@@ -111,8 +111,8 @@ fn fastunpack8() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 8);
-    fastunpack(&temp, 0, &mut output, 0, 8);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 8);
+    BitPacking::fastunpack(&temp, &mut output, 8);
 
 
     assert_eq!(output, TEST_DATA);
@@ -124,8 +124,8 @@ fn fastunpack9() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 9);
-    fastunpack(&temp, 0, &mut output, 0, 9);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 9);
+    BitPacking::fastunpack(&temp, &mut output, 9);
 
 
     assert_eq!(output, TEST_DATA);
@@ -137,8 +137,8 @@ fn fastunpack10() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 10);
-    fastunpack(&temp, 0, &mut output, 0, 10);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 10);
+    BitPacking::fastunpack(&temp, &mut output, 10);
 
 
     assert_eq!(output, TEST_DATA);
@@ -150,8 +150,8 @@ fn fastunpack11() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 11);
-    fastunpack(&temp, 0, &mut output, 0, 11);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 11);
+    BitPacking::fastunpack(&temp, &mut output, 11);
 
 
     assert_eq!(output, TEST_DATA);
@@ -162,8 +162,8 @@ fn fastunpack12() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 12);
-    fastunpack(&temp, 0, &mut output, 0, 12);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 12);
+    BitPacking::fastunpack(&temp, &mut output, 12);
 
 
     assert_eq!(output, TEST_DATA);
@@ -174,8 +174,8 @@ fn fastunpack13() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 13);
-    fastunpack(&temp, 0, &mut output, 0, 13);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 13);
+    BitPacking::fastunpack(&temp, &mut output, 13);
 
 
     assert_eq!(output, TEST_DATA);
@@ -186,8 +186,8 @@ fn fastunpack14() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 14);
-    fastunpack(&temp, 0, &mut output, 0, 14);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 14);
+    BitPacking::fastunpack(&temp, &mut output, 14);
 
 
     assert_eq!(output, TEST_DATA);
@@ -198,8 +198,8 @@ fn fastunpack15() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 15);
-    fastunpack(&temp, 0, &mut output, 0, 15);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 15);
+    BitPacking::fastunpack(&temp, &mut output, 15);
 
 
     assert_eq!(output, TEST_DATA);
@@ -210,8 +210,8 @@ fn fastunpack16() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 16);
-    fastunpack(&temp, 0, &mut output, 0, 16);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 16);
+    BitPacking::fastunpack(&temp, &mut output, 16);
 
 
     assert_eq!(output, TEST_DATA);
@@ -222,8 +222,8 @@ fn fastunpack17() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 17);
-    fastunpack(&temp, 0, &mut output, 0, 17);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 17);
+    BitPacking::fastunpack(&temp, &mut output, 17);
 
 
     assert_eq!(output, TEST_DATA);
@@ -234,8 +234,8 @@ fn fastunpack18() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 18);
-    fastunpack(&temp, 0, &mut output, 0, 18);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 18);
+    BitPacking::fastunpack(&temp, &mut output, 18);
 
 
     assert_eq!(output, TEST_DATA);
@@ -246,8 +246,8 @@ fn fastunpack19() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 19);
-    fastunpack(&temp, 0, &mut output, 0, 19);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 19);
+    BitPacking::fastunpack(&temp, &mut output, 19);
 
 
     assert_eq!(output, TEST_DATA);
@@ -258,8 +258,8 @@ fn fastunpack20() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 20);
-    fastunpack(&temp, 0, &mut output, 0, 20);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 20);
+    BitPacking::fastunpack(&temp, &mut output, 20);
 
 
     assert_eq!(output, TEST_DATA);
@@ -270,8 +270,8 @@ fn fastunpack21() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 21);
-    fastunpack(&temp, 0, &mut output, 0, 21);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 21);
+    BitPacking::fastunpack(&temp, &mut output, 21);
 
 
     assert_eq!(output, TEST_DATA);
@@ -282,8 +282,8 @@ fn fastunpack22() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 22);
-    fastunpack(&temp, 0, &mut output, 0, 22);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 22);
+    BitPacking::fastunpack(&temp, &mut output, 22);
 
 
     assert_eq!(output, TEST_DATA);
@@ -294,8 +294,8 @@ fn fastunpack23() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 23);
-    fastunpack(&temp, 0, &mut output, 0, 23);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 23);
+    BitPacking::fastunpack(&temp, &mut output, 23);
 
 
     assert_eq!(output, TEST_DATA);
@@ -306,8 +306,8 @@ fn fastunpack24() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 24);
-    fastunpack(&temp, 0, &mut output, 0, 24);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 24);
+    BitPacking::fastunpack(&temp, &mut output, 24);
 
 
     assert_eq!(output, TEST_DATA);
@@ -318,8 +318,8 @@ fn fastunpack25() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 25);
-    fastunpack(&temp, 0, &mut output, 0, 25);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 25);
+    BitPacking::fastunpack(&temp, &mut output, 25);
 
 
     assert_eq!(output, TEST_DATA);
@@ -330,8 +330,8 @@ fn fastunpack26() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 26);
-    fastunpack(&temp, 0, &mut output, 0, 26);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 26);
+    BitPacking::fastunpack(&temp, &mut output, 26);
 
 
     assert_eq!(output, TEST_DATA);
@@ -342,8 +342,8 @@ fn fastunpack27() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 27);
-    fastunpack(&temp, 0, &mut output, 0, 27);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 27);
+    BitPacking::fastunpack(&temp, &mut output, 27);
 
 
     assert_eq!(output, TEST_DATA);
@@ -354,8 +354,8 @@ fn fastunpack28() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 28);
-    fastunpack(&temp, 0, &mut output, 0, 28);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 28);
+    BitPacking::fastunpack(&temp, &mut output, 28);
 
 
     assert_eq!(output, TEST_DATA);
@@ -366,8 +366,8 @@ fn fastunpack29() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 29);
-    fastunpack(&temp, 0, &mut output, 0, 29);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 29);
+    BitPacking::fastunpack(&temp, &mut output, 29);
 
 
     assert_eq!(output, TEST_DATA);
@@ -378,8 +378,8 @@ fn fastunpack30() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 30);
-    fastunpack(&temp, 0, &mut output, 0, 30);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 30);
+    BitPacking::fastunpack(&temp, &mut output, 30);
 
 
     assert_eq!(output, TEST_DATA);
@@ -390,8 +390,8 @@ fn fastunpack31() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 31);
-    fastunpack(&temp, 0, &mut output, 0, 31);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 31);
+    BitPacking::fastunpack(&temp, &mut output, 31);
 
 
     assert_eq!(output, TEST_DATA);
@@ -402,8 +402,8 @@ fn fastunpack32() {
     let mut output: [u32; 32] = [0; 32];
     let mut temp: [u32; 32] = [0; 32];
 
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 32);
-    fastunpack(&temp, 0, &mut output, 0, 32);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 32);
+    BitPacking::fastunpack(&temp, &mut output, 32);
 
 
     assert_eq!(output, TEST_DATA);
@@ -417,7 +417,7 @@ fn fastunpack33() {
     let mut temp: [u32; 32] = [0; 32];
 
     // 33 bitwidth is not supported, please panic
-    fastpack(&TEST_DATA, 0, &mut temp, 0, 33);
-    fastunpack(&temp, 0, &mut output, 0, 33);
+    BitPacking::fastpack(&TEST_DATA, &mut temp, 33);
+    BitPacking::fastunpack(&temp, &mut output, 33);
 
 }

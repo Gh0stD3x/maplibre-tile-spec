@@ -11,7 +11,8 @@ members = [
     "crates/RLE",
     "crates/delta",
     "crates/varint",
-    "crates/dictionary"
+    "crates/dictionary",
+    "crates/fsst"
 ]
 
 [lib]

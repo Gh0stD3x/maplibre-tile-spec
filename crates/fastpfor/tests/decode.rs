@@ -14,8 +14,8 @@ mod large {
                 .collect()
         };
         static ref ASSETS_LARGE_ENCODED: Vec<u32> = {
-            let data = fs::read_to_string("./assets/large_encoded.txt")
-                .expect("Error: can not read from assets (large_encoded.txt)");
+            let data = fs::read_to_string("./assets/large_fastpfor.txt")
+                .expect("Error: can not read from assets (large_fastpfor.txt)");
             data.split(",")
                 .map(|i| { if i.parse::<i32>().is_err() {eprintln!("{}", i);} i.parse::<i32>().unwrap() as u32 })
                 .collect()
@@ -27,7 +27,7 @@ mod large {
         let mut core = FastPFOR::default();
         let mut output = vec![0; ASSETS_LARGE_RAW.len()];
 
-        core.decode(&ASSETS_LARGE_ENCODED, output.as_mut_slice());
+        core.decode(&ASSETS_LARGE_ENCODED, &mut output);
 
         assert_eq!(output, ASSETS_LARGE_RAW.as_slice());
     }

@@ -12,20 +12,20 @@ use fastpackwithoutmask::fastpackwithoutmask as _fastpackwithoutmask;
 
 pub struct BitPacking {}
 impl BitPacking {
-    pub fn encode(input: &[u32; 32], output: &mut [u32; 32], bit: u8) {
+    pub fn encode(input: &[u32], output: &mut [u32], bit: u8) {
         _fastpack(input, 0, output, 0, bit);
     }
-    pub fn decode(input: &[u32; 32], output: &mut [u32; 32], bit: u8) {
+    pub fn decode(input: &[u32], output: &mut [u32], bit: u8) {
         _fastunpack(input, 0, output, 0, bit);
     }
     
-    pub fn fastpack(input: &[u32; 32], output: &mut [u32; 32], bit: u8) {
+    pub fn fastpack(input: &[u32], output: &mut [u32], bit: u8) {
         _fastpack(input, 0, output, 0, bit);
     }
-    pub fn fastunpack(input: &[u32; 32], output: &mut [u32; 32], bit: u8) {
+    pub fn fastunpack(input: &[u32], output: &mut [u32], bit: u8) {
         _fastunpack(input, 0, output, 0, bit);
     }
-    pub fn fastpackwithoutmask(input: &[u32; 32], output: &mut [u32; 32], bit: u8) {
+    pub fn fastpackwithoutmask(input: &[u32], output: &mut [u32], bit: u8) {
         _fastpackwithoutmask(input, 0, output, 0, bit);
     }
 }

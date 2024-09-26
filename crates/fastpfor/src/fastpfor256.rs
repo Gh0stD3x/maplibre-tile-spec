@@ -1,8 +1,7 @@
 use byteorder::{ByteOrder, LittleEndian};
-use bitpacking::fastunpack;
+use bitpacking::BitPacking;
 
 use alloc::vec::Vec;
-
 use crate::utils::greatest_multiple;
 
 
@@ -35,7 +34,7 @@ impl FastPFOR {
         }
     }
     
-    pub fn decode(&mut self, input: &[u32], output: &mut [u32]) {
+    pub fn decode(&mut self, input: &[u32], output: &mut Vec<u32>) {
         self.decompress(input, &mut 0, output, &mut 0);
     }
     pub fn encode(&mut self, _input: &[u32], _output: &mut [u32]) {
@@ -89,7 +88,7 @@ impl FastPFOR {
                 if in_except + rounded_up / 32 * k <= input.len() {
                     let mut j = 0;
                     while j < size {
-                        fastunpack(&input, in_except, &mut self.data_tobe_packed[k], j, k as u8);
+                        BitPacking::fastunpack(&input[in_except..], &mut self.data_tobe_packed[k][j..], k as u8);
                         in_except += k;
                         j += 32;
                     }
@@ -102,7 +101,7 @@ impl FastPFOR {
                     data_buffer.copy_from_slice(&input[in_except..in_except + buff_size]);
                     let mut j = 0;
                     while j < size {
-                        fastunpack(&data_buffer, in_except - init_in_except, &mut self.data_tobe_packed[k], j, k as u8);
+                        BitPacking::fastunpack(&data_buffer[in_except - init_in_except..], &mut self.data_tobe_packed[k][j..], k as u8);
                         in_except += k;
                         j += 32;
                     }
@@ -125,7 +124,7 @@ impl FastPFOR {
             container_index += 1;
 
             for k in (0..BLOCK_SIZE).step_by(32) {
-                fastunpack(&input, tmp_in_pos, &mut out[tmp_out_pos + k..], 0, b as u8);
+                BitPacking::fastunpack(&input[tmp_in_pos..], &mut out[tmp_out_pos + k..], b);
                 tmp_in_pos += b as usize;
             }
 

@@ -12,7 +12,8 @@ members = [
     "crates/delta",
     "crates/varint",
     "crates/dictionary",
-    "crates/fsst"
+    "crates/fsst",
+    "playground/varint_perf"
 ]
 
 [lib]

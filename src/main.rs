@@ -1,2 +1,4 @@
 
+mod lib;
+
 fn main() {}

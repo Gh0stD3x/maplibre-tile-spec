@@ -13,8 +13,9 @@ members = [
     "crates/varint",
     "crates/dictionary",
     "crates/fsst",
-    "playground/varint_perf"
-]
+    "playground/varint_perf",
+    "playground/mbtiles"
+, "playground/fsst_encode"]
 
 [lib]
 crate-type = ["cdylib", "rlib"]

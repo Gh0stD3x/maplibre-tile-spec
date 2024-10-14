@@ -21,6 +21,11 @@
       <sourceFolder url="file://$MODULE_DIR$/crates/dictionary/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/crates/dictionary/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/crates/varint/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/fastpfor/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/crates/fsst/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/playground/varint_perf/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/playground/mbtiles/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/playground/fsst_encode/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />

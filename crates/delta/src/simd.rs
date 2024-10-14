@@ -9,7 +9,7 @@ const VECTOR_SIZE: usize = 4;
 const VECTOR_SIZE: usize = 8;
 
 pub fn encode_delta(input: &[i64], output: &mut [i64]) {
-    let mut prev: Simd<i32, VECTOR_SIZE> = Simd::splat(0);
+    let mut prev: Simd<i64, VECTOR_SIZE> = Simd::splat(0);
 
     // Process all chunks that fit into SIMD vectors
     let chunks = input.chunks_exact(VECTOR_SIZE);

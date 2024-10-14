@@ -1,5 +1,6 @@
-use delta::DeltaEncoding;
-use maplibre_tile_spec::IntegerEncoding;
+extern crate core;
+
+use delta::{encode, decode};
 
 #[test]
 fn test_encode_decode_delta() {
@@ -7,8 +8,8 @@ fn test_encode_decode_delta() {
     let mut encoded = vec![0; 9];
     let mut decoded = vec![0; 9];
 
-    DeltaEncoding::encode(&input, &mut encoded);
-    DeltaEncoding::decode(&encoded, &mut decoded);
+    encode(&input, &mut encoded.as_mut_slice());
+    decode(&encoded.as_slice(), &mut decoded.as_mut_slice());
 
     assert_eq!(decoded, input);
 }
